@@ -1,0 +1,25 @@
+{
+  "homepage": "https://arturovaine.github.io/portfolio",
+  "name": "portfolio-dev",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arturovaine/portfolio.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arturovaine/portfolio/issues"
+  },
+  "homepage": "https://github.com/arturovaine/portfolio#readme",
+  "devDependencies": {
+    "gh-pages": "^4.0.0"
+  }
+}
