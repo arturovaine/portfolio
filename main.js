@@ -153,3 +153,58 @@ themeButton.addEventListener('click', () => {
     localStorage.setItem('selected-theme', getCurrentTheme())
     localStorage.setItem('selected-icon', getCurrentIcon())
 })
+
+  var diff;
+        var swiperCounter = document.getElementById('swiper-counter');
+        var swiper = new Swiper('.swiper-container-restaurant', {
+            grabCursor: true,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            pagination: {
+                el: '.swiper-pagination',
+            },
+            breakpoints: {
+                10000: {
+                    slidesPerView: 4
+                },
+                1050: {
+                    slidesPerView: 3
+                },
+                800: {
+                    slidesPerView: 2
+                },
+                575: {
+                    slidesPerView: 1
+                }
+            },
+            on: {
+                init: function() {
+                    var totalSlides = this.slides.length;
+                    var slidesPerView = this.params.slidesPerView;
+                    swiperCounter.innerHTML = totalSlides;
+                    if (totalSlides <= slidesPerView) {
+                        diff = slidesPerView - totalSlides;
+                        dynamicAddMargin();
+                    }
+                },
+                resize: function() {
+                    var totalSlides = this.slides.length;
+                    var slidesPerView = this.params.slidesPerView;
+                    if (totalSlides <= slidesPerView) {
+                        diff = slidesPerView - totalSlides;
+                        dynamicAddMargin();
+                    }
+                }
+            }
+        });
+
+        swiper.on('slideChange', function() {
+            swiperCounter.innerHTML = swiper.slides.length;
+        });
+
+        function dynamicAddMargin() {
+            var firstslide = document.querySelector('.swiper-wrapper > div:first-of-type');
+            firstslide.style.marginLeft = (diff * (firstslide.clientWidth)) / 2 + 'px';
+        }
